@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>张运杰的个人博客: ubuntu init config</title>
+    <link rel="canonical" href="http://zhangyunjie.com/posts-output/2018-02-28/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">张运杰的个人博客</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/">Home</a></li>
+                <li
+                ><a href="/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/pages-output/about/">About</a>
+                </li>
+                
+                <li><a href="/feed.xml">RSS</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">February 28, 2018</div>
+        
+    </div>
+    <h2>ubuntu init config</h2>
+</div>
+<div>
+    
+    <h4 id="<a href='https://git-scm.com/'>git</a>"><a href='https://git-scm.com/'>git</a></h4><pre><code class="git">sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+</code></pre><h4 id="ssh2&#95;config">ssh2 config</h4><pre><code class="bash">ssh-keygen
+</code></pre><h4 id="<a href='http://rime.im/'>rime</a>"><a href='http://rime.im/'>rime</a></h4><h5 id="ibus">ibus</h5><pre><code class="bash">sudo apt-get install ibus-rime
+
+# 朙月拼音（預裝）
+sudo apt-get install librime-data-luna-pinyin
+# 雙拼
+sudo apt-get install librime-data-double-pinyin
+# 宮保拼音
+sudo apt-get install librime-data-combo-pinyin
+# 注音、地球拼音
+sudo apt-get install librime-data-terra-pinyin librime-data-bopomofo
+# 倉頡五代（預裝）
+sudo apt-get install librime-data-cangjie5
+# 速成五代
+sudo apt-get install librime-data-quick5
+# 五筆86、袖珍簡化字拼音、五筆畫
+sudo apt-get install librime-data-wubi librime-data-pinyin-simp librime-data-stroke-simp
+# IPA &#40;X-SAMPA&#41;
+sudo apt-get install librime-data-ipa-xsampa
+# 上海吳語
+sudo apt-get install librime-data-wugniu
+# 粵拼
+sudo apt-get install librime-data-jyutping
+# 中古漢語拼音
+sudo apt-get install librime-data-zyenpheng
+</code></pre><h5 id="fcitx">fcitx</h5><pre><code class="bash">sudo apt-get install fcitx-rime
+sudo apt-get install librime-data-wubi
+cp /usr/share/rime-data/wubi86.schema.yaml &#126;/.config/fcitx/rime/
+cp /usr/share/rime-data/wubi&#95;pinyin.schema.yaml &#126;/.config/fcitx/rime/
+</code></pre><pre><code class="yaml"># default.custom.yaml	
+
+# save it to: 
+
+#   &#126;/.config/ibus/rime  &#40;linux&#41;
+
+#   &#126;/Library/Rime       &#40;macos&#41;
+
+#   %APPDATA%\Rime       &#40;windows&#41;
+
+
+
+patch:
+
+ schema&#95;list:
+
+   - schema: luna&#95;pinyin          # 朙月拼音
+
+   - schema: luna&#95;pinyin&#95;simp     # 朙月拼音 简化字模式
+
+   - schema: luna&#95;pinyin&#95;tw       # 朙月拼音 臺灣正體模式
+
+   - schema: terra&#95;pinyin         # 地球拼音 dì qiú pīn yīn
+
+   - schema: bopomofo             # 注音
+
+   - schema: bopomofo&#95;tw          # 注音 臺灣正體模式
+
+   - schema: jyutping             # 粵拼
+
+   - schema: cangjie5             # 倉頡五代
+
+   - schema: cangjie5&#95;express     # 倉頡 快打模式
+
+   - schema: quick5               # 速成
+
+   - schema: wubi86               # 五笔86
+
+   - schema: wubi&#95;pinyin          # 五笔拼音混合輸入
+
+   - schema: double&#95;pinyin        # 自然碼雙拼
+
+   - schema: double&#95;pinyin&#95;mspy   # 微軟雙拼
+
+   - schema: double&#95;pinyin&#95;abc    # 智能ABC雙拼
+
+   - schema: double&#95;pinyin&#95;flypy  # 小鶴雙拼
+
+   - schema: wugniu        # 吳語上海話（新派）
+
+   - schema: wugniu&#95;lopha  # 吳語上海話（老派）
+
+   - schema: sampheng      # 中古漢語三拼
+
+   - schema: zyenpheng     # 中古漢語全拼
+
+   - schema: ipa&#95;xsampa    # X-SAMPA 國際音標
+
+   - schema: emoji         # emoji表情
+</code></pre><h3 id="emacs">emacs</h3><pre><code class="bash">sudo add-apt-repository ppa:ubuntu-elisp/ppa
+sudo apt-get update
+sudo apt-get install emacs-snapshot-el emacs-snapshot-gtk emacs-snapshot
+git clone https://github.com/syl20bnr/spacemacs &#126;/.emacs.d
+git clone git@github.com:jiesoul/spacemacs.d.git &#126;/.spacemacs.d
+</code></pre><h4 id="vim">vim</h4><pre><code class="bash">sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt-get install vim
+curl https://j.mp/spf13-vim3 -L &gt; spf13-vim.sh &amp;&amp; sh spf13-vim.sh
+</code></pre><h4 id="输入法配置">输入法配置</h4><pre><code class="bash">im-config
+</code></pre><h4 id="zsh">zsh</h4><pre><code class="bash">sudo apt-get install zsh
+sh -c &quot;$&#40;curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&#41;&quot;
+</code></pre><h4 id="jdk">JDK</h4><pre><code class="bash">sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+</code></pre><ul><li>切换JDK<pre><code class="bash"># 显示JDK
+sudo update-java-alternatives -l
+# 切换JDK
+</li></ul>sudo update-java-alternatives -s java-7-oracle  
+</code></pre><ul><li>download jdk-8uversion-linux-x64.tar.gz<pre><code class="bash">tar zxvf jdk-8uversion-linux-x64.tar.gz
+
+</li></ul>sudo mkdir /opt/java
+mv jdk /opt/java
+
+</code></pre><h3 id="<a href='https://nodejs.org/en/'>nodejs</a>"><a href='https://nodejs.org/en/'>nodejs</a></h3><pre><code class="bash">curl -sL https://deb.nodesource.com/setup&#95;4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</code></pre><h4 id="ubuntu&#95;64位安装&#95;andorid&#95;环境">ubuntu 64位安装 andorid 环境</h4><pre><code class="bash">sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libncurses5:i386 libstdc++6:i386 zlib1g:i386
+</code></pre><h4 id="clojur包管理leiningen(带梯子)">Clojur包管理leiningen(带梯子)</h4><pre><code class="bash">sudo apt-get install leiningen
+
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv lein /usr/local/bin/
+sudo chmod a+x /usr/local/bin/lein
+lein
+</code></pre><h4 id="证书设置">证书设置</h4><pre><code class="bash">sudo apt-get install ca-certificates 
+sudo mkdir /usr/share/ca-certificates/jiesoul
+sudo cp  下载/jiesoulbd5b.crt /usr/share/ca-certificates/jiesoul
+sudo cp  下载/sca.crt /usr/share/ca-certificates/jiesoul
+sudo vim /etc/ca-certificates.conf
+加入 jiesoul/sca.crt
+sudo update-ca-certificates 
+</code></pre><h4 id="安装postgresql">安装postgresql</h4><pre><code class="bash">sudo apt-get install postgresql postgresql-contrib
+
+sudo -i -u postgres
+
+
+</code></pre><h3 id="解决方法共享目录挂载">解决方法共享目录挂载</h3><pre><code class="bash">sudo usermod -aG vboxsf $&#40;whoami&#41;
+</code></pre><p>记得要重启一次系统组设置才能生效。</p><h3 id="drracket">DrRacket</h3><pre><code class="bash">sudo add-apt-repository ppa:plt/racket
+sudo apt update
+sudo apt install -y racket
+</code></pre>  
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/tags-output/ubuntu/">ubuntu</a>
+    
+    <a href="/tags-output/rime/">rime</a>
+    
+    <a href="/tags-output/ssh/">ssh</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        
+        <a class="right" href="/posts-output/2016-01-07-docs/">Quick Start Guide &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                <h3>Links</h3>
+                <ul id="links">
+                    <li><a href="http://cryogenweb.org/docs/home.html">Cryogen Docs</a></li>
+                    <li><a href="http://carmenla.me/blog/archives">Carmen's Blog</a></li>
+                    
+                    <li><a href="/pages-output/another-page/">Another Page</a></li>
+                    
+                </ul>
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/posts-output/2018-02-28/">ubuntu init config</a></li>
+                        
+                        <li><a href="/posts-output/2016-01-07-docs/">Quick Start Guide</a></li>
+                        
+                        <li><a href="/posts-output/2014-11-04-second-post/">Yet Another Post</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/tags-output/ubuntu/">ubuntu</a></li>
+                        
+                        <li><a href="/tags-output/rime/">rime</a></li>
+                        
+                        <li><a href="/tags-output/ssh/">ssh</a></li>
+                        
+                        <li><a href="/tags-output/cryogen/">cryogen</a></li>
+                        
+                        <li><a href="/tags-output/very fetch/">very fetch</a></li>
+                        
+                        <li><a href="/tags-output/not fetch/">not fetch</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2018 张运杰
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

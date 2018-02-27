@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:atom='http://www.w3.org/2005/Atom'>
+<channel>
+<atom:link href='http://zhangyunjie.com/' rel='self' type='application/rss+xml'/>
+<title>
+张运杰的个人博客
+</title>
+<link>
+http://zhangyunjie.com/
+</link>
+<description>
+一点一滴汇成河
+</description>
+<lastBuildDate>
+Wed, 28 Feb 2018 04:33:10 +0800
+</lastBuildDate>
+<generator>
+clj-rss
+</generator>
+<item>
+<guid>
+http://zhangyunjie.com/posts-output/2018-02-28/
+</guid>
+<link>
+http://zhangyunjie.com/posts-output/2018-02-28/
+</link>
+<title>
+ubuntu init config
+</title>
+<description>
+&lt;h4 id=&quot;&lt;a href='https://git-scm.com/'&gt;git&lt;/a&gt;&quot;&gt;&lt;a href='https://git-scm.com/'&gt;git&lt;/a&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;git&quot;&gt;sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;ssh2&amp;#95;config&quot;&gt;ssh2 config&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;ssh-keygen
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;&lt;a href='http://rime.im/'&gt;rime&lt;/a&gt;&quot;&gt;&lt;a href='http://rime.im/'&gt;rime&lt;/a&gt;&lt;/h4&gt;&lt;h5 id=&quot;ibus&quot;&gt;ibus&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install ibus-rime
+
+# 朙月拼音（預裝）
+sudo apt-get install librime-data-luna-pinyin
+# 雙拼
+sudo apt-get install librime-data-double-pinyin
+# 宮保拼音
+sudo apt-get install librime-data-combo-pinyin
+# 注音、地球拼音
+sudo apt-get install librime-data-terra-pinyin librime-data-bopomofo
+# 倉頡五代（預裝）
+sudo apt-get install librime-data-cangjie5
+# 速成五代
+sudo apt-get install librime-data-quick5
+# 五筆86、袖珍簡化字拼音、五筆畫
+sudo apt-get install librime-data-wubi librime-data-pinyin-simp librime-data-stroke-simp
+# IPA &amp;#40;X-SAMPA&amp;#41;
+sudo apt-get install librime-data-ipa-xsampa
+# 上海吳語
+sudo apt-get install librime-data-wugniu
+# 粵拼
+sudo apt-get install librime-data-jyutping
+# 中古漢語拼音
+sudo apt-get install librime-data-zyenpheng
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;fcitx&quot;&gt;fcitx&lt;/h5&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install fcitx-rime
+sudo apt-get install librime-data-wubi
+cp /usr/share/rime-data/wubi86.schema.yaml &amp;#126;/.config/fcitx/rime/
+cp /usr/share/rime-data/wubi&amp;#95;pinyin.schema.yaml &amp;#126;/.config/fcitx/rime/
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;yaml&quot;&gt;# default.custom.yaml	
+
+# save it to: 
+
+#   &amp;#126;/.config/ibus/rime  &amp;#40;linux&amp;#41;
+
+#   &amp;#126;/Library/Rime       &amp;#40;macos&amp;#41;
+
+#   %APPDATA%\Rime       &amp;#40;windows&amp;#41;
+
+
+
+patch:
+
+ schema&amp;#95;list:
+
+   - schema: luna&amp;#95;pinyin          # 朙月拼音
+
+   - schema: luna&amp;#95;pinyin&amp;#95;simp     # 朙月拼音 简化字模式
+
+   - schema: luna&amp;#95;pinyin&amp;#95;tw       # 朙月拼音 臺灣正體模式
+
+   - schema: terra&amp;#95;pinyin         # 地球拼音 dì qiú pīn yīn
+
+   - schema: bopomofo             # 注音
+
+   - schema: bopomofo&amp;#95;tw          # 注音 臺灣正體模式
+
+   - schema: jyutping             # 粵拼
+
+   - schema: cangjie5             # 倉頡五代
+
+   - schema: cangjie5&amp;#95;express     # 倉頡 快打模式
+
+   - schema: quick5               # 速成
+
+   - schema: wubi86               # 五笔86
+
+   - schema: wubi&amp;#95;pinyin          # 五笔拼音混合輸入
+
+   - schema: double&amp;#95;pinyin        # 自然碼雙拼
+
+   - schema: double&amp;#95;pinyin&amp;#95;mspy   # 微軟雙拼
+
+   - schema: double&amp;#95;pinyin&amp;#95;abc    # 智能ABC雙拼
+
+   - schema: double&amp;#95;pinyin&amp;#95;flypy  # 小鶴雙拼
+
+   - schema: wugniu        # 吳語上海話（新派）
+
+   - schema: wugniu&amp;#95;lopha  # 吳語上海話（老派）
+
+   - schema: sampheng      # 中古漢語三拼
+
+   - schema: zyenpheng     # 中古漢語全拼
+
+   - schema: ipa&amp;#95;xsampa    # X-SAMPA 國際音標
+
+   - schema: emoji         # emoji表情
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;emacs&quot;&gt;emacs&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo add-apt-repository ppa:ubuntu-elisp/ppa
+sudo apt-get update
+sudo apt-get install emacs-snapshot-el emacs-snapshot-gtk emacs-snapshot
+git clone https://github.com/syl20bnr/spacemacs &amp;#126;/.emacs.d
+git clone git@github.com:jiesoul/spacemacs.d.git &amp;#126;/.spacemacs.d
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;vim&quot;&gt;vim&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt-get install vim
+curl https://j.mp/spf13-vim3 -L &amp;gt; spf13-vim.sh &amp;amp;&amp;amp; sh spf13-vim.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;输入法配置&quot;&gt;输入法配置&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;im-config
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;zsh&quot;&gt;zsh&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install zsh
+sh -c &amp;quot;$&amp;#40;curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh&amp;#41;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;jdk&quot;&gt;JDK&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&lt;li&gt;切换JDK&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;# 显示JDK
+sudo update-java-alternatives -l
+# 切换JDK
+&lt;/li&gt;&lt;/ul&gt;sudo update-java-alternatives -s java-7-oracle  
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&lt;li&gt;download jdk-8uversion-linux-x64.tar.gz&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;tar zxvf jdk-8uversion-linux-x64.tar.gz
+
+&lt;/li&gt;&lt;/ul&gt;sudo mkdir /opt/java
+mv jdk /opt/java
+
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;&lt;a href='https://nodejs.org/en/'&gt;nodejs&lt;/a&gt;&quot;&gt;&lt;a href='https://nodejs.org/en/'&gt;nodejs&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;curl -sL https://deb.nodesource.com/setup&amp;#95;4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;ubuntu&amp;#95;64位安装&amp;#95;andorid&amp;#95;环境&quot;&gt;ubuntu 64位安装 andorid 环境&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libncurses5:i386 libstdc++6:i386 zlib1g:i386
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;clojur包管理leiningen(带梯子)&quot;&gt;Clojur包管理leiningen(带梯子)&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install leiningen
+
+wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv lein /usr/local/bin/
+sudo chmod a+x /usr/local/bin/lein
+lein
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;证书设置&quot;&gt;证书设置&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install ca-certificates 
+sudo mkdir /usr/share/ca-certificates/jiesoul
+sudo cp  下载/jiesoulbd5b.crt /usr/share/ca-certificates/jiesoul
+sudo cp  下载/sca.crt /usr/share/ca-certificates/jiesoul
+sudo vim /etc/ca-certificates.conf
+加入 jiesoul/sca.crt
+sudo update-ca-certificates 
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;安装postgresql&quot;&gt;安装postgresql&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo apt-get install postgresql postgresql-contrib
+
+sudo -i -u postgres
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解决方法共享目录挂载&quot;&gt;解决方法共享目录挂载&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo usermod -aG vboxsf $&amp;#40;whoami&amp;#41;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;记得要重启一次系统组设置才能生效。&lt;/p&gt;&lt;h3 id=&quot;drracket&quot;&gt;DrRacket&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo add-apt-repository ppa:plt/racket
+sudo apt update
+sudo apt install -y racket
+&lt;/code&gt;&lt;/pre&gt;  
+</description>
+<pubDate>
+Wed, 28 Feb 2018 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://zhangyunjie.com/posts-output/2016-01-07-docs/
+</guid>
+<link>
+http://zhangyunjie.com/posts-output/2016-01-07-docs/
+</link>
+<title>
+Quick Start Guide
+</title>
+<description>
+&lt;p&gt;This intro only documents a subset of Cryogen's features. For additional documentation please see the &lt;a href='http://cryogenweb.org'&gt;cryogen site&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Blog posts and pages with Markdown (default) or AsciiDoc&lt;/li&gt;&lt;li&gt;Tags&lt;/li&gt;&lt;li&gt;Table of contents generation&lt;/li&gt;&lt;li&gt;Plain HTML page templates&lt;/li&gt;&lt;li&gt;Code syntax highlighting&lt;/li&gt;&lt;li&gt;Disqus support&lt;/li&gt;&lt;li&gt;Sitemap generation&lt;/li&gt;&lt;li&gt;RSS feed generation&lt;/li&gt;&lt;li&gt;Sass/SCSS compilation&lt;/li&gt;&lt;li&gt;Klipse Integration&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;&lt;p&gt;You will need &lt;a href='https://github.com/technomancy/leiningen'&gt;Leiningen&lt;/a&gt; 2.5.0 or above installed.&lt;/p&gt;&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;&lt;h3 id=&quot;creating&amp;#95;a&amp;#95;new&amp;#95;site&quot;&gt;Creating a New Site&lt;/h3&gt;&lt;p&gt;A new site can be created using the Cryogen template as follows:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;lein new cryogen my-blog
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;running&amp;#95;the&amp;#95;server&quot;&gt;Running the Server&lt;/h3&gt;&lt;p&gt;The web server can be started from the &lt;code&gt;my-blog&lt;/code&gt; directory using the &lt;code&gt;lein-ring&lt;/code&gt; plugin:&lt;/p&gt;&lt;pre&gt;&lt;code&gt;lein ring server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The server will watch for changes in the &lt;code&gt;resources/templates&lt;/code&gt; folder and recompile the content automatically.&lt;/p&gt;&lt;h3 id=&quot;site&amp;#95;configuration&quot;&gt;Site Configuration&lt;/h3&gt;&lt;p&gt;The site configuration file is found at &lt;code&gt;templates/config.edn&lt;/code&gt;, this file looks as follows:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;clojure&quot;&gt;{:site-title           &amp;quot;My Awesome Blog&amp;quot;
+ :author               &amp;quot;Bob Bobbert&amp;quot;
+ :description          &amp;quot;This blog is awesome&amp;quot;
+ :site-url             &amp;quot;http://blogawesome.com/&amp;quot;
+ :post-root            &amp;quot;posts&amp;quot;
+ :page-root            &amp;quot;pages&amp;quot;
+ :post-root-uri        &amp;quot;posts-output&amp;quot;
+ :page-root-uri        &amp;quot;pages-output&amp;quot;
+ :tag-root-uri         &amp;quot;tags-output&amp;quot;
+ :author-root-uri      &amp;quot;authors-output&amp;quot;
+ :blog-prefix          &amp;quot;/blog&amp;quot;
+ :rss-name             &amp;quot;feed.xml&amp;quot;
+ :rss-filters          &amp;#91;&amp;quot;cryogen&amp;quot;&amp;#93;
+ :recent-posts         3
+ :post-date-format     &amp;quot;yyyy-MM-dd&amp;quot;
+ :archive-group-format &amp;quot;yyyy MMMM&amp;quot;
+ :sass-src             &amp;#91;&amp;#93;
+ :sass-path            &amp;quot;sass&amp;quot;
+ :compass-path         &amp;quot;compass&amp;quot;
+ :theme                &amp;quot;blue&amp;quot;
+ :resources            &amp;#91;&amp;quot;img&amp;quot;&amp;#93;
+ :keep-files           &amp;#91;&amp;quot;.git&amp;quot;&amp;#93;
+ :disqus?              false
+ :disqus-shortname     &amp;quot;&amp;quot;
+ :ignored-files        &amp;#91;#&amp;quot;\.#.&amp;#42;&amp;quot; #&amp;quot;.&amp;#42;\.swp$&amp;quot;&amp;#93;
+ :posts-per-page       5
+ :blocks-per-preview   2
+ :previews?            false
+ :clean-urls?          true
+ :hide-future-posts?   true
+ :klipse               {}
+ :debug?               false}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For information about each key please see the &lt;a href='http://cryogenweb.org/docs/configuration.html'&gt;&quot;Configuration&quot;&lt;/a&gt; portion of the Cryogen documentation site.&lt;/p&gt;&lt;h3 id=&quot;switching&amp;#95;between&amp;#95;markdown&amp;#95;and&amp;#95;asciidoc&quot;&gt;Switching between Markdown and AsciiDoc&lt;/h3&gt;&lt;p&gt;Cryogen comes with Markdown support as default. If you want to use AsciiDoc instead, open the &lt;code&gt;project.clj&lt;/code&gt; in your created blog (e.g. &lt;code&gt;my-blog&lt;/code&gt;), and change the line in &lt;code&gt;:dependencies&lt;/code&gt; that says &lt;code&gt;cryogen-markdown&lt;/code&gt; to &lt;code&gt;cryogen-asciidoc&lt;/code&gt;. Instead of looking for files ending in &lt;code&gt;.md&lt;/code&gt; in the &lt;code&gt;resources/templates/md&lt;/code&gt; directory, the compiler will now look for files ending in &lt;code&gt;.asc&lt;/code&gt; in the &lt;code&gt;resources/templates/asc&lt;/code&gt; directory.&lt;/p&gt;&lt;h3 id=&quot;selecting&amp;#95;a&amp;#95;theme&quot;&gt;Selecting a Theme&lt;/h3&gt;&lt;p&gt;The Cryogen template comes with two themes in the &lt;code&gt;resources/templates/themes&lt;/code&gt; folder. To change your blog's theme, change the value of the &lt;code&gt;:theme&lt;/code&gt; key in &lt;code&gt;config.edn&lt;/code&gt;.&lt;/p&gt;&lt;h3 id=&quot;customizing&amp;#95;layouts&quot;&gt;Customizing Layouts&lt;/h3&gt;&lt;p&gt;Cryogen uses &lt;a href='https://github.com/yogthos/Selmer'&gt;Selmer&lt;/a&gt; templating engine for layouts. Please refer to its documentation to see the supported tags and filters for the layouts.&lt;/p&gt;&lt;p&gt;The layouts are contained in the &lt;code&gt;resources/templates/themes/{theme}/html&lt;/code&gt; folder of the project. By default, the &lt;code&gt;base.html&lt;/code&gt; layout is used to provide the general layout for the site. This is where you would add static resources such as CSS and JavaScript assets as well as define headers and footers for your site.&lt;/p&gt;&lt;p&gt;Each page layout should have a name that matches the &lt;code&gt;:layout&lt;/code&gt; key in the page metadata and end with &lt;code&gt;.html&lt;/code&gt;. Page layouts extend the base layout and should only contain the content relevant to the page inside the &lt;code&gt;content&lt;/code&gt; block. For example, the &lt;code&gt;tag&lt;/code&gt; layout is located in &lt;code&gt;tag.html&lt;/code&gt; and looks as follows:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;{% extends &amp;quot;templates/html/layouts/base.html&amp;quot; %}
+{% block content %}
+&amp;lt;div id=&amp;quot;posts-by-tag&amp;quot;&amp;gt;
+    &amp;lt;h2&amp;gt;Posts tagged {{name}}&amp;lt;/h2&amp;gt;
+    &amp;lt;ul&amp;gt;
+    {% for post in posts %}
+        &amp;lt;li&amp;gt;
+            &amp;lt;a href=&amp;quot;{{post.uri}}&amp;quot;&amp;gt;{{post.title}}&amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+    {% endfor %}
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+{% endblock %}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;code&amp;#95;syntax&amp;#95;highlighting&quot;&gt;Code Syntax Highlighting&lt;/h3&gt;&lt;p&gt;Cryogen uses &lt;a href='https://highlightjs.org/'&gt;Highlight.js&lt;/a&gt; for code syntax highlighting. You can add more languages by replacing &lt;code&gt;templates/js/highlight.pack.js&lt;/code&gt; with a customized package from &lt;a href='https://highlightjs.org/download/'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;The &lt;code&gt; initHighlightingOnLoad&lt;/code&gt; function is called in &lt;code&gt;{theme}/html/base.html&lt;/code&gt;.&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;&amp;lt;script&amp;gt;hljs.initHighlightingOnLoad&amp;#40;&amp;#41;;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;deploying&amp;#95;your&amp;#95;site&quot;&gt;Deploying Your Site&lt;/h2&gt;&lt;p&gt;The generated static content will be found under the &lt;code&gt;resources/public&lt;/code&gt; folder. Simply copy the content to a static folder for a server such as Nginx or Apache and your site is now ready for service.&lt;/p&gt;&lt;p&gt;A sample Nginx configuration that's placed in &lt;code&gt;/etc/nginx/sites-available/default&lt;/code&gt; can be seen below:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;server {
+  listen 80 default&amp;#95;server;
+  listen &amp;#91;::&amp;#93;:80 default&amp;#95;server ipv6only=on;
+  server&amp;#95;name localhost &amp;lt;yoursite.com&amp;gt; &amp;lt;www.yoursite.com&amp;gt;;
+
+  access&amp;#95;log  /var/log/blog&amp;#95;access.log;
+  error&amp;#95;log   /var/log/blog&amp;#95;error.log;
+
+  location / {
+    alias       /var/blog/;
+    error&amp;#95;page  404 = /404.html;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Simply set &lt;code&gt;yoursite.com&lt;/code&gt; to the domain of your site in the above configuration and ensure the static content is available at &lt;code&gt;/var/blog/&lt;/code&gt;. Finally, place your custom error page in the &lt;code&gt;/var/blog/404.html&lt;/code&gt; file.&lt;/p&gt;&lt;p&gt;More information on deployment can be found &lt;a href='http://cryogenweb.org/docs/deploying-to-github-pages.html'&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;some&amp;#95;sites&amp;#95;made&amp;#95;with&amp;#95;cryogen&quot;&gt;Some Sites Made With Cryogen&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href='http://carmenla.me/blog/archives'&gt;My personal blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://cryogenweb.org'&gt;Cryogen Documentation Site&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://yogthos.net/'&gt;Yogthos' blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.agynamix.de'&gt;AGYNAMIX Site &amp; Blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.chadstovern.com'&gt;Chad Stovern's blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://lambdax.io/blog/'&gt;LambdaX&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.szcz.org/'&gt;szcz&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://blog.isvit.info'&gt;ISvit blog&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='http://lambdafunk.com'&gt;Lambda Funk&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href='https://ddft.wiki'&gt;DDFT.wiki&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+</description>
+<pubDate>
+Thu, 07 Jan 2016 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://zhangyunjie.com/posts-output/2014-11-04-second-post/
+</guid>
+<link>
+http://zhangyunjie.com/posts-output/2014-11-04-second-post/
+</link>
+<title>
+Yet Another Post
+</title>
+<description>
+&lt;h3 id=&quot;this&amp;#95;post&amp;#95;so&amp;#95;fetch&quot;&gt;This Post So Fetch&lt;/h3&gt;&lt;p&gt;some more stuff happened&lt;/p&gt;
+</description>
+<pubDate>
+Tue, 04 Nov 2014 00:00:00 +0800
+</pubDate>
+</item>
+<item>
+<guid>
+http://zhangyunjie.com/posts-output/2014-03-10-first-post/
+</guid>
+<link>
+http://zhangyunjie.com/posts-output/2014-03-10-first-post/
+</link>
+<title>
+A Post
+</title>
+<description>
+&lt;h3 id=&quot;this&amp;#95;post&amp;#95;not&amp;#95;fetch&amp;#95;enough&quot;&gt;This Post Not Fetch Enough&lt;/h3&gt;&lt;p&gt;some stuff happened&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt; Stop trying to make fetch happen. &lt;/p&gt;&lt;footer&gt; Regina&lt;/footer&gt;&lt;/blockquote&gt;
+</description>
+<pubDate>
+Mon, 10 Mar 2014 00:00:00 +0800
+</pubDate>
+</item>
+</channel>
+</rss>
